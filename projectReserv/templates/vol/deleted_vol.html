@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="hero">
+      <div class="hero-slide">
+        <div
+          class="img overlay"
+          style="background-image: url('static/images/hero_bg_3.jpg')"
+        ></div>
+        <div
+          class="img overlay"
+          style="background-image: url('static/images/hero_bg_2.jpg')"
+        ></div>
+        <div
+          class="img overlay"
+          style="background-image: url('static/images/hero_bg_1.jpg')"
+        ></div>
+      </div>
+    <div class="container mt-4 text-center">
+<div class="row">
+    <div class="col-md-6 m-auto">
+            <div class="card card-body">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="alert alert-danger" role="alert">
+                        etes vous sur de supprimer <br>  <hr>
+                        <span class="h1"> trajet : {{ vol_del.trajet }}</span> <br> <hr>
+                        <span class="h1">   prix : {{ vol_del.prix }}</span> <br> <hr>
+                        <span class="h1">   date : {{ vol_del.date }}</span> <br> <hr>
+                        <span class="h1">  heure : {{ vol_del.heure }}</span>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Oui</button>
+                    <a href="{% url 'vol' %}" class="btn btn-info">non</a>
+                </form>
+            </div>
+    </div>
+</div>
+        </div>
+{% endblock content %}

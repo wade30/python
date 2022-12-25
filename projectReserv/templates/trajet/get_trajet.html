@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+        <h2>
+            <div class="col-md-6 m-auto">
+               <div class="card card-body">
+                    <div class="card card-body">
+                        <div> etes vous sur de supprimer <br>  <hr>
+                        <span class="h1">{{ trajet_detail.trajet |safe }}</span> <br> <hr>
+                        <span class="h1">   prix : {{ trajet_detail.prix }}</span> <br> <hr>
+                        <span class="h1">   date : {{ trajet_detail.date }}</span> <br> <hr>
+                        <span class="h1">  heure : {{ trajet_detail.heure }}</span> <br> <hr>
+<!--                        <span class="h1"> Compagnie :-->
+<!--                            {% for c in trajet_detail.compagnie.all %}-->
+<!--                                <span>{{c.nom}}</span>-->
+<!--                            {% endfor %}-->
+<!--                        </span>--> </span><br> <hr>
+                    <a href="{% url 'trajet' %}" class="btn btn-info">retour</a>
+                  </div>
+               </div>
+            </div>
+        </h2>
+    </div>
+{% endblock content %}
+

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="hero">
+      <div class="hero-slide">
+        <div
+          class="img overlay"
+          style="background-image: url('static/images/hero_bg_3.jpg')"
+        ></div>
+        <div
+          class="img overlay"
+          style="background-image: url('static/images/hero_bg_2.jpg')"
+        ></div>
+        <div
+          class="img overlay"
+          style="background-image: url('static/images/hero_bg_1.jpg')"
+        ></div>
+      </div>
+    <div class="container mt-4 text-center">
+        <div class="row mt-4 h-4 mt-4">
+        <div class="col-md-6 m-auto">
+            <div class="card card-body">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="depart">Depart</label>
+                        <input type="text" name="depart" id="depart" class="form-control">
+                    </div>
+                    <div class="form-group mt-4 mb-4">
+                        <label for="arrivee">Arrive</label>
+                        <input type="text" name="arrivee" id="arrivee" class="form-control" >
+                    </div>
+                    <button class="btn btn-primary">Ajouter</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+
+{% endblock content %}
+

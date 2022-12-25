@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<!-- /*
+* Template Name: Property
+* Template Author: Untrue.co
+* Template URI: https://untree.co/
+* License: https://creativecommons.org/licenses/by/3.0/
+  propriety.html
+*/ -->
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close">
+          <span class="icofont-close js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+
+    <div
+      class="hero page-inner overlay"
+      style="background-image: url('images/hero_bg_1.jpg')"
+    >
+      <div class="container">
+        <div class="row justify-content-center align-items-center">
+          <div class="col-lg-9 text-center mt-5">
+            <h1 class="heading" data-aos="fade-up">Trajet</h1>
+
+            <nav
+              aria-label="breadcrumb"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <ol class="breadcrumb text-center justify-content-center">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li
+                  class="breadcrumb-item active text-white-50"
+                  aria-current="page"
+                >
+                    trajet
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="container mb-4">
+        <div class="row mb-5 align-items-center">
+          <div class="col-lg-6 text-center mx-auto">
+            <h2 class="font-weight-bold text-primary heading">
+              La liste trajet
+            </h2>
+          </div>
+        </div>
+        <div class="p-4 mt-4"  style="background-image: url('../static/images/img_1.jpg')">
+          <div class="row">
+          <div class="col-12">
+            <div class="property-slider-wrap img overlay">
+              <div class="property-slider">
+                {% for v in vol %}
+                  <div class="property-item" >
+                     <div class="property-content mt-4">
+                        <div>
+                        <span class="city d-block mb-3">{{v.trajet | safe}}</span>
+                        <span class="city d-block mb-3">prix : {{v.prix}}</span>
+                        <span class="city d-block mb-3"> date : {{v.date}}</span>
+                        <span class="city d-block mb-3">heure : {{v.heure}}</span>
+                        <a href="{% url 'detail' v.id %}" class="btn btn-primary py-2 px-3">details</a>
+                        <a href="{% url 'updateVol' v.id %}" class="btn btn-success py-2 px-3">modifier</a>
+                        <a href="{% url 'supprimerVol' v.id %}" class="btn btn-danger py-2 px-3">Supprimer</a>
+                      </div>
+                     </div>
+                </div>
+                {% endfor %}
+                <!-- .item -->
+              </div>
+              <div id="property-nav" class="controls" tabindex="0" aria-label="Carousel Navigation">
+                <span class="prev" data-controls="prev" aria-controls="property" tabindex="-1">Prev</span>
+                <span class="next" data-controls="next" aria-controls="property" tabindex="-1">Next</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div class="float-end mt-4 mb-4 "><a href="{% url 'ajoutVol'%}" class="btn btn-primary py-2 px-3">Ajouter vol</a></div>
+      </div>
+    </div>
+{% endblock %}

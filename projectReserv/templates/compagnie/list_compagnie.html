@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<p class="text-center h3 mt-4">La liste des compagnies</p>
+<div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close">
+          <span class="icofont-close js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+
+
+    <div
+      class="hero page-inner overlay"
+      style="background-image: url('images/hero_bg_1.jpg')"
+    >
+      <div class="container">
+        <div class="row justify-content-center align-items-center">
+          <div class="col-lg-9 text-center mt-5">
+            <h1 class="heading" data-aos="fade-up">compagnie</h1>
+
+            <nav
+              aria-label="breadcrumb"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <ol class="breadcrumb text-center justify-content-center">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li
+                  class="breadcrumb-item active text-white-50"
+                  aria-current="page"
+                >
+                  Compagnie
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="section section-5 bg-light mb-4">
+      <div class="container">
+        <div class="row justify-content-center text-center mb-5">
+          <div class="col-lg-6 mb-5">
+            <h2 class="font-weight-bold heading text-primary mb-4">
+              Compagnies
+            </h2>
+          </div>
+        </div>
+        <div class="row mt-4 p-4">
+          {% for c in compagnie %}
+          <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0">
+            <div class="h-100 person mt-4 mb-4 py-3">
+              <img src="{{c.logo.url}}" alt="Image" class="img-fluid"/>
+              <div class="person-contents">
+                <h2 class="mb-0">Nom compagnie</h2>
+                <h1 class="d-block mb-3">{{c.nom}}</h1>
+                <h1 class="d-block mb-3">{{c.n}}</h1>
+                {% for v in vol %}
+                  {% if v.compagnie_id == c.id %}
+                        <span class="city d-block mb-3">{{v.trajet | safe}}</span>
+                        <span class="city d-block mb-3">prix : {{v.prix}}</span>
+                        <span class="city d-block mb-3"> date : {{v.date}}</span>
+                        <span class="city d-block mb-3">heure : {{v.heure}}</span>
+                  {% endif %}
+                {% endfor %}
+
+              </div>
+              <a href="{% url 'updateCompagnie' c.id %}" class="btn btn-success">modifier</a>
+             <a href="{% url 'supprimerCompagnie' c.id %}" class="btn btn-danger">Supprimer</a>
+            </div>
+
+          </div>
+          {% endfor %}
+        </div>
+        <div class="float-end mt-3 mb-4 "><a href="{% url 'ajoutCompagnie'%}" class="btn btn-primary py-2 px-3">Ajouter compagnie</a></div>
+      </div>
+    </div>
+
+
+
+{% endblock %}

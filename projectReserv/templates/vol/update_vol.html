@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="hero">
+      <div class="hero-slide">
+        <div
+          class="img overlay"
+          style="background-image: url('static/images/hero_bg_3.jpg')"
+        ></div>
+        <div
+          class="img overlay"
+          style="background-image: url('static/images/hero_bg_2.jpg')"
+        ></div>
+        <div
+          class="img overlay"
+          style="background-image: url('static/images/hero_bg_1.jpg')"
+        ></div>
+      </div>
+        <div class="container mt-4 text-center">
+    <div class="row mt-4 h-4">
+        <div class="col-md-6 m-auto">
+            <div class="card card-body">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="prix">Prix</label>
+                        <input type="number" name="prix" id="prix" class="form-control" value="{{vol_up.prix}}">
+                    </div>
+                    <div class="form-group mt-4 mb-4">
+                        <label for="date">date</label> <br>
+                        <span class="border">{{vol_up.date}}</span>
+                        <input type="date" name="date" id="date" class="form-control">
+                    </div>
+                    <div class="form-group ">
+                        <label for="heure">Heure</label> <br>
+                        <span class="border">{{vol_up.heure}}</span>
+                        <input type="time" name="heure" id="heure" class="form-control" value="{{vol_up.heure}}">
+                    </div>
+                    <div class="mt-3">
+                        <button class="btn btn-primary" type="submit">Modifier</button>
+                        <a href="{% url 'vol'%}" class="btn btn-danger">annuler</a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+            </div>
+{% endblock content %}
+
